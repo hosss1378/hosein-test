@@ -64,6 +64,555 @@
       ],
       "rotate": true,
       "rotateSpeed": 30
+    },
+    {
+      "targetIndex": 5,
+      "name": "1-2",
+      "type": "video",
+      "image": "targets/images/1-2.jpg",
+      "video": "videos/1-2.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 6,
+      "name": "2",
+      "type": "video",
+      "image": "targets/images/2.jpg",
+      "video": "videos/2.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 7,
+      "name": "3-2",
+      "type": "video",
+      "image": "targets/images/3-2.jpg",
+      "video": "videos/3-2.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 8,
+      "name": "4-2",
+      "type": "video",
+      "image": "targets/images/4-2.jpg",
+      "video": "videos/4-2.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 9,
+      "name": "5",
+      "type": "video",
+      "image": "targets/images/5.jpg",
+      "video": "videos/5.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 10,
+      "name": "6",
+      "type": "video",
+      "image": "targets/images/6.jpg",
+      "video": "videos/6.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 11,
+      "name": "7",
+      "type": "video",
+      "image": "targets/images/7.jpg",
+      "video": "videos/7.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 12,
+      "name": "8",
+      "type": "video",
+      "image": "targets/images/8.jpg",
+      "video": "videos/8.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 13,
+      "name": "9",
+      "type": "video",
+      "image": "targets/images/9.jpg",
+      "video": "videos/9.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 14,
+      "name": "10",
+      "type": "video",
+      "image": "targets/images/10.jpg",
+      "video": "videos/10.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 15,
+      "name": "12",
+      "type": "video",
+      "image": "targets/images/12.jpg",
+      "video": "videos/12.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 16,
+      "name": "13",
+      "type": "video",
+      "image": "targets/images/13.jpg",
+      "video": "videos/13.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 17,
+      "name": "14",
+      "type": "video",
+      "image": "targets/images/14.jpg",
+      "video": "videos/14.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 18,
+      "name": "15",
+      "type": "video",
+      "image": "targets/images/15.jpg",
+      "video": "videos/15.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 19,
+      "name": "16",
+      "type": "video",
+      "image": "targets/images/16.jpg",
+      "video": "videos/16.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 20,
+      "name": "17",
+      "type": "video",
+      "image": "targets/images/17.jpg",
+      "video": "videos/17.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 21,
+      "name": "18",
+      "type": "video",
+      "image": "targets/images/18.jpg",
+      "video": "videos/18.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 22,
+      "name": "19",
+      "type": "video",
+      "image": "targets/images/19.jpg",
+      "video": "videos/19.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 23,
+      "name": "20",
+      "type": "video",
+      "image": "targets/images/20.jpg",
+      "video": "videos/20.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 24,
+      "name": "21",
+      "type": "video",
+      "image": "targets/images/21.jpg",
+      "video": "videos/21.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 25,
+      "name": "22",
+      "type": "video",
+      "image": "targets/images/22.jpg",
+      "video": "videos/22.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 26,
+      "name": "23",
+      "type": "video",
+      "image": "targets/images/23.jpg",
+      "video": "videos/23.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 27,
+      "name": "24",
+      "type": "video",
+      "image": "targets/images/24.jpg",
+      "video": "videos/24.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 28,
+      "name": "25",
+      "type": "video",
+      "image": "targets/images/25.jpg",
+      "video": "videos/25.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 29,
+      "name": "26",
+      "type": "video",
+      "image": "targets/images/26.jpg",
+      "video": "videos/26.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 30,
+      "name": "28",
+      "type": "video",
+      "image": "targets/images/28.jpg",
+      "video": "videos/28.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 31,
+      "name": "29",
+      "type": "video",
+      "image": "targets/images/29.jpg",
+      "video": "videos/29.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 32,
+      "name": "30",
+      "type": "video",
+      "image": "targets/images/30.jpg",
+      "video": "videos/30.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 33,
+      "name": "31",
+      "type": "video",
+      "image": "targets/images/31.jpg",
+      "video": "videos/31.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 34,
+      "name": "32",
+      "type": "video",
+      "image": "targets/images/32.jpg",
+      "video": "videos/32.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 35,
+      "name": "32-2",
+      "type": "video",
+      "image": "targets/images/32-2.png",
+      "video": "videos/32-2.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 36,
+      "name": "33",
+      "type": "video",
+      "image": "targets/images/33.jpg",
+      "video": "videos/33.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 37,
+      "name": "34",
+      "type": "video",
+      "image": "targets/images/34.jpg",
+      "video": "videos/34.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 38,
+      "name": "35",
+      "type": "video",
+      "image": "targets/images/35.jpg",
+      "video": "videos/35.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 39,
+      "name": "36",
+      "type": "video",
+      "image": "targets/images/36.jpg",
+      "video": "videos/36.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 40,
+      "name": "37",
+      "type": "video",
+      "image": "targets/images/37.jpg",
+      "video": "videos/37.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 41,
+      "name": "38",
+      "type": "video",
+      "image": "targets/images/38.jpg",
+      "video": "videos/38.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 42,
+      "name": "39",
+      "type": "video",
+      "image": "targets/images/39.jpg",
+      "video": "videos/39.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 43,
+      "name": "40",
+      "type": "video",
+      "image": "targets/images/40.jpg",
+      "video": "videos/40.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 44,
+      "name": "41",
+      "type": "video",
+      "image": "targets/images/41.jpg",
+      "video": "videos/41.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 45,
+      "name": "42",
+      "type": "video",
+      "image": "targets/images/42.jpg",
+      "video": "videos/42.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 46,
+      "name": "43",
+      "type": "video",
+      "image": "targets/images/43.jpg",
+      "video": "videos/43.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 47,
+      "name": "44",
+      "type": "video",
+      "image": "targets/images/44.jpg",
+      "video": "videos/44.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 48,
+      "name": "45",
+      "type": "video",
+      "image": "targets/images/45.jpg",
+      "video": "videos/45.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 49,
+      "name": "img_0046",
+      "type": "video",
+      "image": "targets/images/img_0046.jpg",
+      "video": "videos/img_0046.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 50,
+      "name": "img_0047",
+      "type": "video",
+      "image": "targets/images/img_0047.jpg",
+      "video": "videos/img_0047.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 51,
+      "name": "img_0048",
+      "type": "video",
+      "image": "targets/images/img_0048.jpg",
+      "video": "videos/img_0048.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 52,
+      "name": "img_0049",
+      "type": "video",
+      "image": "targets/images/img_0049.jpg",
+      "video": "videos/img_0049.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 53,
+      "name": "img_0050",
+      "type": "video",
+      "image": "targets/images/img_0050.jpg",
+      "video": "videos/img_0050.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 54,
+      "name": "img_0051",
+      "type": "video",
+      "image": "targets/images/img_0051.jpg",
+      "video": "videos/img_0051.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 55,
+      "name": "img_0052",
+      "type": "video",
+      "image": "targets/images/img_0052.jpg",
+      "video": "videos/img_0052.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 56,
+      "name": "img_0053",
+      "type": "video",
+      "image": "targets/images/img_0053.jpg",
+      "video": "videos/img_0053.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 57,
+      "name": "img_0054",
+      "type": "video",
+      "image": "targets/images/img_0054.jpg",
+      "video": "videos/img_0054.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 58,
+      "name": "img_0055",
+      "type": "video",
+      "image": "targets/images/img_0055.jpg",
+      "video": "videos/img_0055.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 59,
+      "name": "img_0056",
+      "type": "video",
+      "image": "targets/images/img_0056.jpg",
+      "video": "videos/img_0056.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 60,
+      "name": "img_0057",
+      "type": "video",
+      "image": "targets/images/img_0057.jpg",
+      "video": "videos/img_0057.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 61,
+      "name": "img_0058",
+      "type": "video",
+      "image": "targets/images/img_0058.jpg",
+      "video": "videos/img_0058.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 62,
+      "name": "img_0057-2",
+      "type": "video",
+      "image": "targets/images/img_0057-2.jpg",
+      "video": "videos/img_0057-2.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 63,
+      "name": "img_0058-2",
+      "type": "video",
+      "image": "targets/images/img_0058-2.jpg",
+      "video": "videos/img_0058-2.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 64,
+      "name": "img_0059",
+      "type": "video",
+      "image": "targets/images/img_0059.jpg",
+      "video": "videos/img_0059.mp4",
+      "width": 1,
+      "height": 1.7778
+    },
+    {
+      "targetIndex": 65,
+      "name": "img_0060",
+      "type": "video",
+      "image": "targets/images/img_0060.jpg",
+      "video": "videos/img_0060.mp4",
+      "width": 1,
+      "height": 1.7778
     }
   ]
 }
