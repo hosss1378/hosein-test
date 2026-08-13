@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>پنل مدیریت AR</title>
+<style>
+  body { font-family: Tahoma, sans-serif; max-width: 720px; margin: 24px auto; padding: 0 16px; background: #0f1115; color: #eee; }
+  h1 { font-size: 20px; }
+  h2 { font-size: 16px; margin-top: 32px; border-bottom: 1px solid #333; padding-bottom: 6px; }
+  .card { background: #1a1d24; border: 1px solid #2a2e37; border-radius: 10px; padding: 16px; margin-bottom: 16px; }
+  label { display: block; margin: 10px 0 4px; font-size: 13px; color: #aaa; }
+  input[type=text], input[type=number], input[type=file] { width: 100%; box-sizing: border-box; padding: 8px; border-radius: 6px; border: 1px solid #333; background: #0f1115; color: #eee; }
+  input:disabled { opacity: 0.5; }
+  button { margin-top: 14px; background: #4f7cff; color: #fff; border: none; padding: 10px 18px; border-radius: 8px; font-size: 14px; cursor: pointer; }
+  button.secondary { background: #333844; }
+  button.small { padding: 5px 10px; font-size: 12px; margin: 0; }
+  button.danger { background: #7a2e2e; }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  .status { margin-top: 10px; font-size: 13px; white-space: pre-wrap; }
+  .status.ok { color: #6bd06b; }
+  .status.err { color: #ff6b6b; }
+  .status.busy { color: #ffcf6b; }
+  .list-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #2a2e37; }
+  .list-item img { width: 56px; height: 56px; object-fit: cover; border-radius: 6px; border: 1px solid #333; }
+  .list-item .meta { font-size: 12px; color: #aaa; }
+  .list-item .name { font-size: 14px; }
+  .list-item .actions { display: flex; gap: 6px; }
+  a.viewer-link { color: #6bb8ff; }
+  .idx-badge { background: #2a2e37; padding: 2px 8px; border-radius: 10px; font-size: 11px; color: #aaa; }
+  .type-badge { background: #33405e; padding: 2px 8px; border-radius: 10px; font-size: 11px; color: #bcd; }
+  .rotate-badge { background: #3f2e5e; padding: 2px 8px; border-radius: 10px; font-size: 11px; color: #d8c8ff; }
+  .type-toggle { display: flex; gap: 16px; margin: 8px 0; }
+  .radio-opt { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #ddd; margin: 0; }
+  .radio-opt input { width: auto; }
+  .check-opt { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #ddd; margin: 10px 0 4px; }
+  .check-opt input { width: auto; }
+  .hint { font-size: 11px; color: #777; margin-top: -2px; }
+  .btn-row { display: flex; gap: 10px; }
+</style>
+</head>
+<body>
+  <h1>پنل مدیریت AR</h1>
+  <p style="color:#999; font-size:13px;">یه عکس بدید و انتخاب کنید ویدیو روش پخش بشه یا یه مدل سه‌بعدی روش بیفته — خودش عکس رو کامپایل و ذخیره می‌کنه و ویوور رو آپدیت می‌کنه.
+    <br/>ویوور AR: <a class="viewer-link" href="index.html" target="_blank">index.html</a></p>
+
+  <div class="card">
+    <h2 id="formTitle" style="margin-top:0;border:none;">افزودن هدف جدید</h2>
+
+    <label>اسم (فقط حروف/عدد انگلیسی)</label>
+    <input type="text" id="nameInput" placeholder="مثلا: poster1" />
+    <div id="nameHint" class="hint"></div>
+
+    <label id="imageLabel">عکسی که باید تشخیص داده بشه</label>
+    <input type="file" id="imageInput" accept="image/png, image/jpeg" />
+
+    <label>نوع محتوایی که روی عکس نشون داده می‌شه</label>
+    <div class="type-toggle">
+      <label class="radio-opt"><input type="radio" name="contentType" value="video" checked /> ویدیو</label>
+      <label class="radio-opt"><input type="radio" name="contentType" value="model" /> مدل سه‌بعدی (.glb)</label>
+    </div>
+
+    <div id="videoField">
+      <label id="videoLabel">ویدیویی که روی عکس پخش بشه</label>
+      <input type="file" id="videoInput" accept="video/mp4, video/webm, video/quicktime" />
+    </div>
+
+    <div id="modelField" style="display:none;">
+      <label id="modelLabel">فایل مدل سه‌بعدی (فرمت glb)</label>
+      <input type="file" id="modelInput" accept=".glb" />
+
+      <label>مقیاس (اگه مدل خیلی بزرگ/کوچیک افتاد، عوضش کنید)</label>
+      <input type="text" id="scaleInput" value="0.1" />
+
+      <label class="check-opt"><input type="checkbox" id="rotateInput" /> وقتی تشخیص داده شد، مدل بچرخه</label>
+      <div id="rotateSpeedWrap" style="display:none;">
+        <label>سرعت چرخش (درجه بر ثانیه — عدد بزرگ‌تر = چرخش سریع‌تر)</label>
+        <input type="number" id="rotateSpeedInput" value="30" min="1" max="360" />
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button id="submitBtn">ذخیره و آماده‌سازی</button>
+      <button id="cancelBtn" class="secondary" style="display:none;">لغو ویرایش</button>
+    </div>
+    <div id="status" class="status"></div>
+  </div>
+
+  <h2>هدف‌های فعلی</h2>
+  <div id="list" class="card"></div>
+
+<script type="module">
+import "https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image.prod.js";
+</script>
+<script type="module">
+const statusEl = document.getElementById("status");
+const listEl = document.getElementById("list");
+const submitBtn = document.getElementById("submitBtn");
+const cancelBtn = document.getElementById("cancelBtn");
+const formTitle = document.getElementById("formTitle");
+const nameInput = document.getElementById("nameInput");
+const nameHint = document.getElementById("nameHint");
+const imageInput = document.getElementById("imageInput");
+const imageLabel = document.getElementById("imageLabel");
+const videoInput = document.getElementById("videoInput");
+const videoLabel = document.getElementById("videoLabel");
+const modelInput = document.getElementById("modelInput");
+const modelLabel = document.getElementById("modelLabel");
+const scaleInput = document.getElementById("scaleInput");
+const rotateInput = document.getElementById("rotateInput");
+const rotateSpeedWrap = document.getElementById("rotateSpeedWrap");
+const rotateSpeedInput = document.getElementById("rotateSpeedInput");
+const videoField = document.getElementById("videoField");
+const modelField = document.getElementById("modelField");
+
+let editingIndex = null; // null = add mode, وگرنه targetIndex ای که در حال ویرایششیم
+
+function setStatus(text, cls) {
+  statusEl.textContent = text;
+  statusEl.className = "status " + (cls || "");
+}
+
+function sanitizeName(name) {
+  return (name || "").replace(/[^a-zA-Z0-9_-]/g, "");
+}
+
+function loadImage(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
+}
+
+function readVideoAspect(file) {
+  return new Promise((resolve) => {
+    const video = document.createElement("video");
+    video.preload = "metadata";
+    video.onloadedmetadata = () => {
+      const w = video.videoWidth || 16;
+      const h = video.videoHeight || 9;
+      URL.revokeObjectURL(video.src);
+      resolve(h / w);
+    };
+    video.onerror = () => resolve(0.5625);
+    video.src = URL.createObjectURL(file);
+  });
+}
+
+async function uploadRaw(url, blobOrFile) {
+  const res = await fetch(url, { method: "POST", body: blobOrFile });
+  if (!res.ok) throw new Error("upload failed: " + url + " -> " + res.status);
+  return res.json();
+}
+
+async function fetchState() {
+  const res = await fetch("/api/list", { cache: "no-store" });
+  return res.json();
+}
+
+function setContentType(type) {
+  document.querySelector(`input[name="contentType"][value="${type}"]`).checked = true;
+  videoField.style.display = type === "video" ? "" : "none";
+  modelField.style.display = type === "model" ? "" : "none";
+}
+
+document.querySelectorAll('input[name="contentType"]').forEach((radio) => {
+  radio.addEventListener("change", () => {
+    setContentType(document.querySelector('input[name="contentType"]:checked').value);
+  });
+});
+
+rotateInput.addEventListener("change", () => {
+  rotateSpeedWrap.style.display = rotateInput.checked ? "" : "none";
+});
+
+function resetForm() {
+  editingIndex = null;
+  formTitle.textContent = "افزودن هدف جدید";
+  submitBtn.textContent = "ذخیره و آماده‌سازی";
+  cancelBtn.style.display = "none";
+  nameInput.value = "";
+  nameInput.disabled = false;
+  nameHint.textContent = "";
+  imageInput.value = "";
+  imageLabel.textContent = "عکسی که باید تشخیص داده بشه";
+  videoInput.value = "";
+  videoLabel.textContent = "ویدیویی که روی عکس پخش بشه";
+  modelInput.value = "";
+  modelLabel.textContent = "فایل مدل سه‌بعدی (فرمت glb)";
+  scaleInput.value = "0.1";
+  rotateInput.checked = false;
+  rotateSpeedInput.value = "30";
+  rotateSpeedWrap.style.display = "none";
+  setContentType("video");
+}
+
+function startEdit(t) {
+  editingIndex = t.targetIndex;
+  formTitle.textContent = `ویرایش "${t.name}"`;
+  submitBtn.textContent = "ذخیره تغییرات";
+  cancelBtn.style.display = "";
+  nameInput.value = t.name;
+  nameInput.disabled = true; // تغییر اسم یعنی تغییر مسیر فایل‌ها، فعلاً پشتیبانی نمی‌شه
+  nameHint.textContent = "اسم بعد از ساخت قابل تغییر نیست";
+  imageInput.value = "";
+  imageLabel.textContent = "عکس جدید (خالی بذارید تا عکس فعلی حفظ بشه)";
+  videoInput.value = "";
+  videoLabel.textContent = "ویدیوی جدید (خالی بذارید تا ویدیوی فعلی حفظ بشه)";
+  modelInput.value = "";
+  modelLabel.textContent = "مدل جدید (خالی بذارید تا مدل فعلی حفظ بشه)";
+
+  const type = t.type || "video";
+  setContentType(type);
+
+  if (type === "model") {
+    scaleInput.value = t.scale != null ? t.scale : 0.1;
+    rotateInput.checked = !!t.rotate;
+    rotateSpeedInput.value = t.rotateSpeed || 30;
+    rotateSpeedWrap.style.display = t.rotate ? "" : "none";
+  }
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+cancelBtn.addEventListener("click", resetForm);
+
+async function renderList() {
+  const state = await fetchState();
+  const cfg = state.config || { targets: [] };
+  window.__lastConfig = cfg;
+  listEl.innerHTML = "";
+  if (!cfg.targets || cfg.targets.length === 0) {
+    listEl.innerHTML = '<div style="color:#888;font-size:13px;">هنوز چیزی اضافه نشده</div>';
+    return;
+  }
+  cfg.targets
+    .slice()
+    .sort((a, b) => a.targetIndex - b.targetIndex)
+    .forEach((t) => {
+      const type = t.type || "video";
+      const secondLine = type === "model" ? t.model : t.video;
+      const typeLabel = type === "model" ? "مدل سه‌بعدی" : "ویدیو";
+      const row = document.createElement("div");
+      row.className = "list-item";
+      row.innerHTML = `
+        <img src="${t.image}?t=${Date.now()}" />
+        <div style="flex:1;">
+          <div class="name">${t.name}</div>
+          <div class="meta">${secondLine}</div>
+        </div>
+        <span class="type-badge">${typeLabel}</span>
+        ${type === "model" && t.rotate ? '<span class="rotate-badge">چرخش ' + (t.rotateSpeed || 30) + '°/s</span>' : ""}
+        <span class="idx-badge">index ${t.targetIndex}</span>
+        <div class="actions"><button class="small secondary" data-edit="${t.targetIndex}">ویرایش</button></div>
+      `;
+      listEl.appendChild(row);
+    });
+
+  listEl.querySelectorAll("[data-edit]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const idx = Number(btn.getAttribute("data-edit"));
+      const target = cfg.targets.find((x) => x.targetIndex === idx);
+      if (target) startEdit(target);
+    });
+  });
+}
+
+submitBtn.addEventListener("click", async () => {
+  const contentType = document.querySelector('input[name="contentType"]:checked').value;
+  const imageFile = imageInput.files[0];
+  const videoFile = videoInput.files[0];
+  const modelFile = modelInput.files[0];
+  const scaleValue = parseFloat(scaleInput.value) || 0.1;
+  const rotateOn = rotateInput.checked;
+  const rotateSpeed = parseFloat(rotateSpeedInput.value) || 30;
+  const isEdit = editingIndex !== null;
+  let name = sanitizeName(nameInput.value);
+
+  if (!isEdit && !imageFile) {
+    setStatus("لطفاً عکس رو انتخاب کنید", "err");
+    return;
+  }
+  if (contentType === "video" && !isEdit && !videoFile) {
+    setStatus("لطفاً ویدیو رو انتخاب کنید", "err");
+    return;
+  }
+  if (contentType === "model" && !isEdit && !modelFile) {
+    setStatus("لطفاً فایل مدل سه‌بعدی (.glb) رو انتخاب کنید", "err");
+    return;
+  }
+
+  submitBtn.disabled = true;
+  cancelBtn.disabled = true;
+  try {
+    setStatus("در حال آماده‌سازی...", "busy");
+
+    const state = await fetchState();
+    const cfg = state.config || { imageTargetSrc: "targets/targets.mind", targets: [] };
+    const existingTargets = (cfg.targets || []).slice().sort((a, b) => a.targetIndex - b.targetIndex);
+
+    let targetIndex, imageExt;
+    let existingTarget = null;
+
+    if (isEdit) {
+      existingTarget = existingTargets.find((t) => t.targetIndex === editingIndex);
+      if (!existingTarget) throw new Error("هدف مورد ویرایش پیدا نشد");
+      name = existingTarget.name;
+      targetIndex = existingTarget.targetIndex;
+      imageExt = imageFile ? (imageFile.name.split(".").pop() || "png").toLowerCase() : existingTarget.image.split(".").pop();
+    } else {
+      const existingNames = new Set(existingTargets.map((t) => t.name));
+      if (!name) name = sanitizeName(imageFile.name.replace(/\.[^.]+$/, "")) || "target";
+      let finalName = name;
+      let suffix = 2;
+      while (existingNames.has(finalName)) {
+        finalName = name + "-" + suffix;
+        suffix++;
+      }
+      name = finalName;
+      targetIndex = existingTargets.length;
+      imageExt = (imageFile.name.split(".").pop() || "png").toLowerCase();
+    }
+
+    if (imageFile) {
+      setStatus("در حال آپلود عکس...", "busy");
+      await uploadRaw(`/api/upload?type=image&name=${name}&ext=${imageExt}`, imageFile);
+    }
+
+    let newTarget;
+    if (contentType === "video") {
+      let videoPath = existingTarget && existingTarget.type !== "model" ? existingTarget.video : null;
+      let width = existingTarget && existingTarget.width != null ? existingTarget.width : 1;
+      let height = existingTarget && existingTarget.height != null ? existingTarget.height : 0.5625;
+      if (videoFile) {
+        const videoExt = (videoFile.name.split(".").pop() || "mp4").toLowerCase();
+        setStatus("در حال آپلود ویدیو...", "busy");
+        await uploadRaw(`/api/upload?type=video&name=${name}&ext=${videoExt}`, videoFile);
+        videoPath = `videos/${name}.${videoExt}`;
+        height = Number((await readVideoAspect(videoFile)).toFixed(4));
+      }
+      if (!videoPath) throw new Error("این هدف قبلاً ویدیو نداشته — برای تغییر نوع به ویدیو، یه فایل ویدیو انتخاب کنید");
+      newTarget = {
+        targetIndex,
+        name,
+        type: "video",
+        image: `targets/images/${name}.${imageExt}`,
+        video: videoPath,
+        width,
+        height,
+      };
+    } else {
+      let modelPath = existingTarget && existingTarget.type === "model" ? existingTarget.model : null;
+      if (modelFile) {
+        setStatus("در حال آپلود مدل سه‌بعدی...", "busy");
+        await uploadRaw(`/api/upload?type=model&name=${name}&ext=glb`, modelFile);
+        modelPath = `models/${name}.glb`;
+      }
+      if (!modelPath) throw new Error("این هدف قبلاً مدل نداشته — برای تغییر نوع به مدل سه‌بعدی، یه فایل .glb انتخاب کنید");
+      newTarget = {
+        targetIndex,
+        name,
+        type: "model",
+        image: `targets/images/${name}.${imageExt}`,
+        model: modelPath,
+        scale: scaleValue,
+        position: (existingTarget && existingTarget.position) || [0, 0, 0],
+        rotation: (existingTarget && existingTarget.rotation) || [0, 0, 0],
+        rotate: rotateOn,
+        rotateSpeed: rotateSpeed,
+      };
+    }
+
+    let mindBuffer = null;
+    if (imageFile) {
+      setStatus("در حال بارگذاری عکس‌های قبلی برای کامپایل مجدد...", "busy");
+      const orderedImages = [];
+      for (const t of existingTargets) {
+        if (isEdit && t.targetIndex === targetIndex) {
+          orderedImages.push(await loadImage(URL.createObjectURL(imageFile)));
+        } else {
+          orderedImages.push(await loadImage(t.image + "?t=" + Date.now()));
+        }
+      }
+      if (!isEdit) {
+        orderedImages.push(await loadImage(URL.createObjectURL(imageFile)));
+      }
+
+      setStatus("در حال کامپایل تصویر برای تشخیص (ممکنه چند ثانیه طول بکشه)...", "busy");
+      const compiler = new window.MINDAR.IMAGE.Compiler();
+      await compiler.compileImageTargets(orderedImages, (progress) => {
+        setStatus("در حال کامپایل... " + progress.toFixed(0) + "%", "busy");
+      });
+      mindBuffer = await compiler.exportData();
+
+      setStatus("در حال ذخیره فایل تشخیص...", "busy");
+      await uploadRaw("/api/upload?type=mind", new Blob([mindBuffer]));
+    }
+
+    const newTargets = isEdit
+      ? existingTargets.map((t) => (t.targetIndex === targetIndex ? newTarget : t))
+      : [...existingTargets, newTarget];
+
+    const newConfig = {
+      imageTargetSrc: "targets/targets.mind",
+      targets: newTargets,
+    };
+
+    setStatus("در حال ذخیره تنظیمات...", "busy");
+    await uploadRaw("/api/config", new Blob([JSON.stringify(newConfig, null, 2)], { type: "application/json" }));
+
+    setStatus(`تموم شد! "${name}" ذخیره شد. حالا توی ویوور قابل تشخیصه.`, "ok");
+    resetForm();
+    await renderList();
+  } catch (err) {
+    console.error(err);
+    setStatus("خطا: " + (err && err.message ? err.message : err), "err");
+  } finally {
+    submitBtn.disabled = false;
+    cancelBtn.disabled = false;
+  }
+});
+
+renderList();
+</script>
+</body>
+</html>

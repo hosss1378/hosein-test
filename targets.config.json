@@ -1,0 +1,69 @@
+{
+  "imageTargetSrc": "targets/targets.mind",
+  "targets": [
+    {
+      "targetIndex": 0,
+      "name": "card",
+      "image": "targets/images/card.png",
+      "video": "videos/card-demo.mp4",
+      "width": 1,
+      "height": 0.5625
+    },
+    {
+      "targetIndex": 1,
+      "name": "1",
+      "image": "targets/images/1.jpg",
+      "video": "videos/1.mp4",
+      "width": 1,
+      "height": 1.5278
+    },
+    {
+      "targetIndex": 2,
+      "name": "Layer_01png_2K_202608031931",
+      "image": "targets/images/Layer_01png_2K_202608031931.jpeg",
+      "video": "videos/Layer_01png_2K_202608031931.mp4",
+      "width": 1,
+      "height": 1.7926
+    },
+    {
+      "targetIndex": 3,
+      "name": "3",
+      "type": "model",
+      "image": "targets/images/3.jpg",
+      "model": "models/3.glb",
+      "scale": 0.1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "rotate": true,
+      "rotateSpeed": 60
+    },
+    {
+      "targetIndex": 4,
+      "name": "4",
+      "type": "model",
+      "image": "targets/images/4.jpg",
+      "model": "models/4.glb",
+      "scale": 0.1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "rotate": true,
+      "rotateSpeed": 30
+    }
+  ]
+}
